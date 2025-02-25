@@ -43,8 +43,8 @@
 
 1. Après le redémarrage, dans la console pfSense :
    - Attribuez les interfaces :
-     - **WAN** : vtnet0 ou em0 (selon VirtualBox).
-     - **LAN** : vtnet1 ou em1.
+     - **WAN** : em0 .
+     - **LAN** : em1.
    - Une adresse IP sera automatiquement attribuée au LAN : **192.168.1.1/24**.
 
 ## 5. Accéder à l'interface Web
@@ -52,6 +52,8 @@
 1. Créez une **VM client** (Windows/Linux) avec **Réseau interne** et connectez-la au **LAN**.
 2. Attribuez à la VM client une adresse IP en **DHCP** ou manuellement (par exemple, **192.168.1.2/24**).
 3. Ouvrez un navigateur et entrez l'URL suivante : https://192.168.1.1
+
+![Connexion pfsense](https://github.com/KAOUTARBAH/pfSense/blob/main/images/connPf.png)
 4. Identifiants par défaut :
 - **Utilisateur** : admin
 - **Mot de passe** : pfsense

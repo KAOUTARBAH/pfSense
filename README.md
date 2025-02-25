@@ -100,14 +100,14 @@ Cela permet à pfSense de récupérer automatiquement une adresse IP de votre fo
 # 3. Tester que la machine client peut accéder à l'extérieur
 - Depuis une machine interne, testez la connexion en pinguant une **IP publique** (par exemple, **8.8.8.8**) : 
 ```sh
-** ping 8.8.8.8 **
+*ping 8.8.8.8*
 ```
 
 ![ping](https://github.com/KAOUTARBAH/pfSense/blob/main/images/ping8.png)
 
 - Testez la **résolution DNS** avec la commande **nslookup** pour vérifier que les noms de domaine sont résolus correctement : 
 ```sh
-**nslookup google.com
+*nslookup google.com*
 ```
 ![nslookup](https://github.com/KAOUTARBAH/pfSense/blob/main/images/nslookup.png)
 

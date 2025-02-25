@@ -111,6 +111,45 @@ nslookup google.com
 ```
 ![nslookup](https://github.com/KAOUTARBAH/pfSense/blob/main/images/nslookup.png)
 
+# 4. Mettre en place une règle de filtrage réseau pour interdire à la machine client de sortir du réseau interne
+
+1. **Accédez à l'interface Web pfSense**.
+2. Allez dans **Firewall > Rules > LAN**.
+3. Cliquez sur **Add** pour ajouter une nouvelle règle.
+
+### Configurer la règle :
+- **Action** : **Block** (Bloquer).
+- **Source** : **192.168.1.100** (adresse IP de la machine client à bloquer).
+- **Protocole** : **Any** (cela bloque tous les protocoles pour l'accès à Internet).
+- **Destination** : **Any** (bloquer l'accès vers n'importe quelle destination).
+  
+4. Cliquez sur **Save** pour enregistrer la règle.
+5. Cliquez sur **Apply Changes** pour appliquer les modifications.
+
+### Tester :
+- Depuis la machine **192.168.1.2**, testez l'accès à Internet (par exemple, en pingant **8.8.8.8**). 
+- Le client ne devrait plus pouvoir sortir et le ping devrait échouer.
+
+
+### Ajouter une règle pour autoriser la communication locale :
+1. Cliquez sur **Add** pour créer une nouvelle règle **au-dessus de la règle de blocage**.
+2. Configurez la règle pour autoriser l'accès local (sur le réseau interne) :
+   - **Action** : **Pass** (Autoriser).
+   - **Source** : **192.168.1.2** (adresse IP de la machine client).
+   - **Destination** : **192.168.1.1** (adresse IP du routeur ou du serveur pfSense).
+   - **Protocole** : **ICMP** (pour permettre les pings, si vous voulez autoriser les pings uniquement).
+   - **Description** : Optionnelle, mettez quelque chose comme "Autoriser pings vers 192.168.1.1".
+
+3. Cliquez sur **Save** et **Apply Changes**.
+
+![regles](https://github.com/KAOUTARBAH/pfSense/blob/main/images/regles.png)
+
+### Tester :
+- Depuis la machine **192.168.1.2**, essayez de pinger l'adresse **192.168.1.1**. Cela doit fonctionner, car la communication locale est autorisée.
+![conn local](https://github.com/KAOUTARBAH/pfSense/blob/main/images/pingLocal.png)
+- Essayez de pinger une adresse IP externe comme **8.8.8.8**. Cela ne fonctionnera pas, car l'accès Internet est bloqué.
+![pas connexion internet](https://github.com/KAOUTARBAH/pfSense/blob/main/images/noping.png)
+
 
 
 

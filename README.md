@@ -144,7 +144,7 @@ nslookup google.com
 ### Tester :
 - Depuis la machine **192.168.1.2**, essayez de pinger l'adresse **192.168.1.1**. Cela doit fonctionner, car la communication locale est autorisée.
 
-[conn local](https://github.com/KAOUTARBAH/pfSense/blob/main/images/pingLocal.png)
+![conn local](https://github.com/KAOUTARBAH/pfSense/blob/main/images/pingLocal.png)
 
 - Essayez de pinger une adresse IP externe comme **8.8.8.8**. Cela ne fonctionnera pas, car l'accès Internet est bloqué.
 

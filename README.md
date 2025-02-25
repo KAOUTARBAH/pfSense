@@ -36,8 +36,8 @@
 5. Confirmez l'installation et attendez la fin du processus.
 6. Une fois l'installation terminée, retirez l'ISO et redémarrez la VM.
 
-![installation pfsense](https://github.com/KAOUTARBAH/pfSense/tree/main/images/installation-pfsense.png)
-![adresse client](https://github.com/KAOUTARBAH/Checkpoint2/blob/main/images/installation-pfsense.png)
+![installation pfsense](https://github.com/KAOUTARBAH/pfSense/blob/main/images/installation-pfsense.png)
+
 
 ## 4. Configurer les interfaces WAN et LAN
 

@@ -106,9 +106,9 @@ Cela permet à pfSense de récupérer automatiquement une adresse IP de votre fo
 ![ping](https://github.com/KAOUTARBAH/pfSense/blob/main/images/ping8.png)
 
 - Testez la **résolution DNS** avec la commande **nslookup** pour vérifier que les noms de domaine sont résolus correctement : 
-```sh
-*nslookup google.com*
-```
+*```sh
+nslookup google.com
+```*
 ![nslookup](https://github.com/KAOUTARBAH/pfSense/blob/main/images/nslookup.png)
 
 

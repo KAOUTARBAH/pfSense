@@ -150,6 +150,27 @@ nslookup google.com
 
 ![pas connexion internet](https://github.com/KAOUTARBAH/pfSense/blob/main/images/noping.png)
 
+## 5. Vérifier que la machine client ne peut plus communiquer avec l'extérieur, mais que le poste d'administration peut encore communiquer avec l'extérieur
+- ajouter un Poste administrateur : Vérifiez l'adresse IP du poste administrateur (par exemple, 192.168.1.3).
+- Ajouter une règle pour autoriser l'accès Internet pour le poste administrateur
+1. **Accédez à l'interface Web pfSense**.
+2. Allez dans **Firewall > Rules > LAN**.
+3. **Créez une nouvelle règle** au-dessus de la règle de blocage (si elle existe) pour autoriser l'accès à Internet pour le poste administrateur.
+
+### Configurer la règle pour l'administrateur :
+- **Action** : **Pass** (Passer, pour autoriser l'accès).
+- **Interface** : **LAN**.
+- **Source** : Sélectionnez **Single host or alias** et entrez l'adresse IP de votre poste administrateur (par exemple, **192.168.1.3**).
+- **Destination** : **any** (pour permettre l'accès à n'importe quelle destination).
+- **Protocole** : **any** (pour permettre tous les protocoles).
+- **Description** : Donnez un nom, comme "Autoriser l'accès Internet pour le poste administrateur".
+
+4. Cliquez sur **Save** pour enregistrer la règle.
+5. Cliquez sur **Apply Changes** pour appliquer les modifications.
+
+### Tester :
+- Depuis le poste administrateur (**192.168.1.3**), testez l'accès à Internet (par exemple, essayez de pinger **8.8.8.8** ou d'accéder à un site web).
+- Le poste administrateur devrait pouvoir se connecter à Internet, tandis que les autres clients seront toujours bloqués.
 
 
 

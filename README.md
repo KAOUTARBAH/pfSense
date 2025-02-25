@@ -38,7 +38,6 @@
 
 ![installation pfsense](https://github.com/KAOUTARBAH/pfSense/blob/main/images/installation-pfsense.png)
 
-
 ## 4. Configurer les interfaces WAN et LAN
 
 1. Après le redémarrage, dans la console pfSense :
@@ -52,11 +51,13 @@
 1. Créez une **VM client** (Windows/Linux) avec **Réseau interne** et connectez-la au **LAN**.
 2. Attribuez à la VM client une adresse IP en **DHCP** ou manuellement (par exemple, **192.168.1.2/24**).
 3. Ouvrez un navigateur et entrez l'URL suivante : https://192.168.1.1
-
 ![Connexion pfsense](https://github.com/KAOUTARBAH/pfSense/blob/main/images/connPf.png)
+
 4. Identifiants par défaut :
 - **Utilisateur** : admin
 - **Mot de passe** : pfsense
+![Conf pfsense](https://github.com/KAOUTARBAH/pfSense/blob/main/images/confPfsense.png)
+
 5. Configurez pfSense via l’assistant.
 
 
@@ -74,59 +75,3 @@
 
 
 
-
-
-
-Je vois que vous êtes sur l'interface de commande de pfSense 2.7.2-RELEASE. Vous pouvez exécuter des commandes depuis le Shell (option 8) pour diagnostiquer votre problème de connexion.
-
-1. Installer pfSense
-- Télécharger et installer pfSense : Allez sur le site officiel de pfSense (https://www.pfsense.org/download/) et téléchargez la dernière version de pfSense. Vous pouvez installer pfSense sur une machine physique ou une machine virtuelle.
-
-- Configuration initiale : Une fois pfSense installé, accédez à l'interface Web de pfSense en utilisant l'adresse par défaut (172.16.15.254/24 ). Vous devrez vous connecter avec le nom d'utilisateur admin et le mot de passe pfsense par défaut.
-
-- Vous serez ensuite guidé pour la configuration initiale. Assurez-vous que pfSense est correctement connecté à vos interfaces réseau (LAN et WAN).
-
-- **VM pfSense :**
-    
-    - Pare-feu du lab
-    - 3 interfaces :
-        - WAN : 192.168.1.250/24 => Interface pont VirtualBox
-        - LAN : 172.16.15.254/24 => Réseau interne VirtualBox LAN
-        - DMZ : 172.16.200.254/24 => Réseau interne VirtualBox DMZ
-
-2. S'assurer d'une configuration réseau valide permettant aux machines internes d’accéder à l'extérieur
-- **VM Client1 :**
-    
-    - PC client dans le LAN pour :
-        - Accès à la console pfsense du LAN
-        - Test avec les autres VM
-    - Configuration IP :
-        - Adresse : 172.16.15.20/24 => Réseau interne VirtualBox LAN
-        - Passerelle : 172.16.15.254
-    - Compte wilder dans le groupes des administrateurs locaux
-
-- **VM webserver1 :**
-    
-    - Serveur web dans le LAN
-    - Configuration IP :
-        - Adresse : 172.16.15.10/24 => Réseau interne VirtualBox LAN
-        - Passerelle : 172.16.15.254
-- **VM webserver2 :**
-    
-    - Serveur web dans la DMZ
-    - Configuration IP :
-        - Adresse : 172.16.200.10/24 => Réseau interne VirtualBox DMZ
-        - Passerelle : 172.16.200.254
-- **VM webserver3 :**
-    
-    - Serveur web dans le WAN (dans le réseau 192.168.1.0/24)
-    - Configuration IP :
-        - Adresse : 192.168.1.120/24 => Réseau Pont
-        - Passerelle : 192.168.1.250
-
-3. Tester que la machine client peut accéder à l'extérieur
-
-
-4. Mettre en place une règle de filtrage réseau pour interdire à la machine client de sortir du réseau interne
-5. Vérifier que la machine client ne peut plus communiquer avec l'extérieur, mais que le poste d'administration peut encore communiquer avec l'extérieur
-6. Expliquer la règle de filtrage mise en place dans le bloc de texte solution de la quête

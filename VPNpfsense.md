@@ -50,7 +50,7 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
     - Nom commun : openvpn.mondomaine.com (ou le nom d'hôte de ton serveur si nécessaire).
 - Clique ensuite sur Enregistrer pour créer le certificat.
 
-![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/ca-server/CA.png)
+![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/ca-server.png)
 
 Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 

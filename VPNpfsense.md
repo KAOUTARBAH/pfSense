@@ -57,12 +57,12 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 
 ### 4. Configurer le Serveur OpenVPN sur pfSense
 
-1️⃣ Aller dans **VPN > OpenVPN > Assistant**.  
-2️⃣ Choisir **Accès Utilisateur Local**.  
-3️⃣ Sélectionner la **CA** créée précédemment.  
-4️⃣ Sélectionner le **certificat du serveur** créé.  
+- Aller dans **VPN > OpenVPN > Wizards .  pour utiliser l'assistant de configuration.  
+- Choisir * Local User Access **.  
+- Sélectionner la **CA**   `OpenVPN_CA`  créée précédemment.  
+- Sélectionner le **certificat du serveur**  `OpenVPN-Serveur-Cert` créé.  
 
-### 🌐 Paramètres réseau :  
+#### Paramètres réseau :  
 
 - **Interface** : `WAN`  
 - **Protocole** : `UDP`  
@@ -72,5 +72,9 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 - ✅ **Activer Redirect Gateway** pour forcer tout le trafic via le VPN.  
 - ✅ **Activer Client-to-Client** pour permettre la communication entre les clients VPN.  
 
-5️⃣ **Sauvegarder et appliquer**.  
+- **Sauvegarder et appliquer**.  
+
+![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN
+.png)
+
 

@@ -74,7 +74,6 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 
 - **Sauvegarder et appliquer**.  
 
-![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN
-.png)
+![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN.png)
 
 

@@ -17,3 +17,21 @@
 - Rechercher OpenVPN Client Export et l’installer.
 
 ![Installation VPN](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/openVPN.png)
+
+
+### 2. Créer une Autorité de Certification (CA) manuellement
+1️⃣ Allez dans → Système > Certificats.
+2️⃣ Onglet "Autorités de Certification" 
+3️⃣ Cliquez sur "Ajouter".
+4️⃣ Remplissez les champs :
+   - **Nom de l’autorité** : `OpenVPN_CA`  
+   - **Méthode** : Créer une Autorité de Certification interne  
+   - **Taille de la clé** : `2048 bits`  
+   - **Durée** : `3650 jours (10 ans)`  
+   - **Nom commun** : `OpenVPN-CA`  
+   - **Organisation** : Mets le nom de ton entreprise ou laisse vide  
+   - **Pays/Région/Localité** : Remplis selon ta localisation  
+5️⃣ Enregistrez.
+
+![CA](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/CA.png)
+Cette CA servira à signer les certificats du serveur OpenVPN et des clients.

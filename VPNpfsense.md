@@ -21,7 +21,7 @@
 
 ### 2. Créer une Autorité de Certification (CA) manuellement
 - Allez dans → Système > Certificats.
-- Onglet "Autorités de Certification" 
+- Onglet "Autorités" 
 - Cliquez sur "Ajouter".
 - Remplissez les champs :
    - **Nom de l’autorité** : `OpenVPN_CA`  
@@ -38,7 +38,7 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 
 ### 3. Générer un Certificat Serveur
 - Allez dans → Système > Certificats.
-- Onglet "Autorités de Certification" 
+- Onglet "Certificats" 
 - Cliquez sur "Ajouter".
 - Remplissez les champs :
     - Méthode : Créer un certificat interne
@@ -49,6 +49,11 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
     - Durée : 3650 jours (10 ans) ou une durée plus courte selon ta préférence.
     - Nom commun : openvpn.mondomaine.com (ou le nom d'hôte de ton serveur si nécessaire).
 - Clique ensuite sur Enregistrer pour créer le certificat.
+
+![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/ca-server/CA.png)
+
+Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
+
 
 ### 4. Configurer le Serveur OpenVPN sur pfSense
 

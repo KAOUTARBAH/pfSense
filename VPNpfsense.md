@@ -125,9 +125,7 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
     - Destination: WAN address
     - Sauvegarder et appliquer.
 
-
 ![r-vers-wan](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/r-vers-wan.png)
-
 
 - Aller dans Firewall > Rules > OpenVPN et ajouter une règle :
     - Action: Pass

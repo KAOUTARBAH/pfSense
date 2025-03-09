@@ -25,15 +25,21 @@
 - Cliquez sur "Ajouter".
 - Remplissez les champs :
    - **Nom de l’autorité** : `OpenVPN_CA`  
-   - **Méthode** : Créer une Autorité de Certification interne  
+   - **Méthode** : `Create an internal Authorithy`
    - **Taille de la clé** : `2048 bits`  
    - **Durée** : `3650 jours (10 ans)`  
-   - **Nom commun** : `OpenVPN-CA`  
+   - **Nom commun** : `OpenVPN-CA` 
+   - **Country Code** :  `fr` 
    - **Organisation** : Mets le nom de ton entreprise ou laisse vide  
    - **Pays/Région/Localité** : Remplis selon ta localisation  
 - Enregistrez.
 
 ![CA](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/CA.png)
+
+![CA-ranka](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/ca-ranka.png)
+
+- L'autorité de certification doit apparaître dans l'interface, comme ceci :
+![CA-ranka](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/ca-ranka2.png)
 Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 
 ### 3. Générer un Certificat Serveur
@@ -42,25 +48,25 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 - Cliquez sur "Ajouter".
 - Remplissez les champs :
     - Méthode : Créer un certificat interne
-    - Nom descriptif : OpenVPN-Serveur-Cert
+    - Nom descriptif : OpenVPN-Serveur-Certificat
     - Type de certificat : Certificat de serveur
     - Autorité de certification : Sélectionne OpenVPN_CA (l'Autorité de Certification que tu as créée auparavant).
     - Clé : Laisse la valeur par défaut (2048 bits).
     - Durée : 3650 jours (10 ans) ou une durée plus courte selon ta préférence.
-    - Nom commun : openvpn.mondomaine.com (ou le nom d'hôte de ton serveur si nécessaire).
+    - Nom commun : WINSERV (exemple :openvpn.mondomaine.com) (ou le nom d'hôte de ton serveur si nécessaire).
 - Clique ensuite sur Enregistrer pour créer le certificat.
 
 ![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/ca-server.png)
-
+![ca-server2](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/ca-server2.png)
 Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 
 
 ### 4. Configurer le Serveur OpenVPN sur pfSense
 
-- Aller dans **VPN > OpenVPN > Wizards .  pour utiliser l'assistant de configuration.  
+- Aller dans **VPN > OpenVPN > server .  pour utiliser l'assistant de configuration.  
 - Choisir * Local User Access **.  
 - Sélectionner la **CA**   `OpenVPN_CA`  créée précédemment.  
-- Sélectionner le **certificat du serveur**  `OpenVPN-Serveur-Cert` créé.  
+- Sélectionner le **certificat du serveur**  `OpenVPN-Serveur-Certificat` créé.  
 
 #### Paramètres réseau :  
 
@@ -73,7 +79,75 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 - ✅ **Activer Client-to-Client** pour permettre la communication entre les clients VPN.  
 
 - **Sauvegarder et appliquer**.  
+![openvpnserver](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/openvpnserver.png)
+![serverOpenVPN](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN.png)
 
-![ca-server](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN.png)
 
 
+
+### 5. Créer les utilisateurs locaux
+# Création d’un utilisateur dans User Manager sur pfSense
+
+## 1️⃣ Accéder à User Manager  
+1. Connectez-vous à pfSense.  
+2. Allez dans **System > User Manager**.  
+3. Cliquez sur **+ Add** pour ajouter un nouvel utilisateur.  
+
+## 2️⃣ Remplir les informations de l’utilisateur  
+- **Username** : Saisissez un nom d’utilisateur (ex : `vpn_user01`).  
+- **Password** : Créez un mot de passe sécurisé.  
+- **Full Name** (optionnel) : Indiquez le nom complet de l’utilisateur.  
+- **Group Membership** :  
+  - Cliquez sur **Add** et sélectionnez `admins` si l’utilisateur doit avoir des droits d’administration.  
+  - Sinon, laissez vide ou attribuez-lui un groupe spécifique.  
+- **Expiration date** (optionnel) : Définissez une date d’expiration du compte si nécessaire.  
+
+## 3️⃣ Associer un certificat à l’utilisateur (si OpenVPN est utilisé)  
+1. Descendez jusqu'à la section **User Certificates**.  
+2. Cliquez sur **Add**.  
+3. Choisissez **"Create a user certificate"**.  
+4. Sélectionnez la **Certificate Authority (CA)** déjà créée.  
+5. Remplissez les champs comme suit :  
+   - **Descriptive name** : `vpn_user01_cert`.  
+   - **Key Length** : `2048 bits`.  
+   - **Digest Algorithm** : `SHA256`.  
+   - **Lifetime** : `3650 jours (10 ans)` (ou selon votre politique de sécurité).  
+
+![ca-client](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\ca-client.png)
+![clt-ca](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\clt-ca.png)
+
+
+### 6. Configurer les règles de pare-feu
+- Aller dans Firewall > Rules > WAN et ajouter une règle :
+    - Protocol: UDP
+    - Port: 1194
+    - Source: Any
+    - Destination: WAN address
+    - Sauvegarder et appliquer.
+
+
+![r-vers-wan](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\r-vers-wan.png)
+
+
+- Aller dans Firewall > Rules > OpenVPN et ajouter une règle :
+    - Action: Pass
+    - Protocol: Any
+    - Source: OpenVPN network
+    - Destination: LAN net
+    - Sauvegarder et appliquer.
+
+![vers-clt](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\vers-clt.png)
+
+
+### 7.Tester l'accès distant depuis un poste client
+- Sur mon PC Windows 10, je commence par installer le client OpenVPN... Ce qui se fait très facilement, sans difficulté particulière !
+
+- Télécharger OpenVPN
+
+- Dans le dossier "C:\Programmes\OpenVPN\Config" vous devez extraire le contenu de l'archive ZIP téléchargée depuis le Pfsense et qui contient la configuration. Vous pouvez créer un sous-dossier dans le dossier "config" si vous voulez.
+
+- Ensuite, sur l'icône OpenVPN effectuez un clic droit et cliquez sur "Connecter".
+
+![conn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\conn.png)
+![conn-vpn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\conn-vpn.png)
+![test-vpn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\test-vpn.png)

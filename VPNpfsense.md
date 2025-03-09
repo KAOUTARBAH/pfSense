@@ -126,7 +126,7 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
     - Sauvegarder et appliquer.
 
 
-![r-vers-wan](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\r-vers-wan.png)
+![r-vers-wan](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/r-vers-wan.png)
 
 
 - Aller dans Firewall > Rules > OpenVPN et ajouter une règle :
@@ -136,7 +136,7 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
     - Destination: LAN net
     - Sauvegarder et appliquer.
 
-![vers-clt](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\vers-clt.png)
+![vers-clt](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/vers-clt.png)
 
 
 ### 7.Tester l'accès distant depuis un poste client
@@ -148,6 +148,6 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
 
 - Ensuite, sur l'icône OpenVPN effectuez un clic droit et cliquez sur "Connecter".
 
-![conn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\conn.png)
-![conn-vpn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\conn-vpn.png)
-![test-vpn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\test-vpn.png)
+![conn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/conn.png)
+![conn-vpn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/conn-vpn.png)
+![test-vpn](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/test-vpn.png)

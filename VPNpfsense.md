@@ -113,8 +113,8 @@ Cette CA servira à signer les certificats du serveur OpenVPN et des clients.
    - **Digest Algorithm** : `SHA256`.  
    - **Lifetime** : `3650 jours (10 ans)` (ou selon votre politique de sécurité).  
 
-![ca-client](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\ca-client.png)
-![clt-ca](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/serverOpenVPN\clt-ca.png)
+![ca-client](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/ca-client.png)
+![clt-ca](https://github.com/KAOUTARBAH/pfSense/blob/main/imagesVPN/clt-ca.png)
 
 
 ### 6. Configurer les règles de pare-feu
